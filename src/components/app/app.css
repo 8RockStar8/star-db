@@ -1,0 +1,19 @@
+.toggle-btn {
+  margin-bottom: 20px;
+  padding: 10px;
+  color: #fff;
+  background-color: orange;
+  border: none;
+  outline: none;
+  cursor: pointer !important;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.toggle-btn:focus {
+  outline: none;
+  cursor: pointer;
+}
