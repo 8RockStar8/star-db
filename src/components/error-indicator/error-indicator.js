@@ -2,7 +2,7 @@ import React from 'react';
 
 import './error-indicator.css';
 
-const ErrorIndicator = () => {
+const ErrorIndicator = _ => {
   return (
     <div className='error-indicator'>
       <span className='boom'>BOOM!</span>
