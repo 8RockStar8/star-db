@@ -1,11 +1,11 @@
-.person-detail {
+.item-detail {
   display: flex;
   margin-top: 1rem;
   flex-direction: row;
   padding: 1rem;
 }
 
-.person-detail .person-image {
+.item-detail .item-image {
   width: 30%;
   height: 30%;
   border-radius: 10px;
@@ -15,10 +15,10 @@
   -o-border-radius: 10px;
 }
 
-.person-detail .list-group-item {
+.item-detail .list-group-item {
   padding: .25rem;
 }
 
-.person-detail .list-group-item .term{
+.item-detail .list-group-item .term{
   margin-right: .5rem;
 }
