@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
+
 import ErrorButton from '../error-button';
 
 import './item-details.css';
@@ -18,8 +18,6 @@ export {
 };
 
 export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
-
   state = {
     item: null,
     image: null
@@ -57,8 +55,7 @@ export default class ItemDetails extends Component {
       return <span>Select a person from a list</span>
     }
 
-    const { id, name, gender, birthDay, eyeColor } = item;
-    // const { name } = item;
+    const { name } = item;
 
     return (
       <div className='item-detail card'>
@@ -67,7 +64,7 @@ export default class ItemDetails extends Component {
           <h4>{name}</h4>
           <ul className='list-group list-group-flush'>
             {
-              React.Children.map(this.props.children, child => {
+              React.Children.map(this.props.children, (child) => {
                 return React.cloneElement(child, { item });
               })
             }
