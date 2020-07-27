@@ -6,7 +6,6 @@ export default class SwapiService {
   _imageBase = 'https://starwars-visualguide.com/assets/img/';
 
   getResouse = async url => {
-    console.log(`${this._apiBase}${url}`);
     const res = await fetch(`${this._apiBase}${url}`);
 
     if (!res.ok) {
