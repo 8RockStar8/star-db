@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 import Header from './../header';
+import RandomPlanet from './../random-planet';
 import ErrorBoundry from './../error-boundry';
 
+import ItemDetails from './../item-details';
 import SwapiService from './../../services/swapi-service';
+
+import { SwapiServiceProvider } from './../swapi-service-context';
 
 import {
   PersonList,
@@ -39,21 +43,23 @@ export default class App extends Component {
   render() {
     return (
       <ErrorBoundry>
-        <div className='app-center'>
-          <Header />
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className='app-center'>
+            <Header />
 
-          <PersonDetails itemId={11} />
+            <PersonDetails itemId={11} />
 
-          <PlanetDetails itemId={5} />
+            <PlanetDetails itemId={5} />
 
-          <StarshipDetails itemId={9} />
-            
-          <PersonList />
+            <StarshipDetails itemId={9} />
+              
+            <PersonList />
 
-          <StarshipList />
+            <StarshipList />
 
-          <PlanetList />
-        </div>
+            <PlanetList />
+          </div>
+        </SwapiServiceProvider>
       </ErrorBoundry>
     );
   }
