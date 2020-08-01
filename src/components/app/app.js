@@ -40,11 +40,8 @@ export default class App extends Component {
             <Header onServiceChange={this.onServiceChange} />
 
             <RandomPlanet />
-
             <PeoplePage />
-
             <PlanetsPage />
-
             <StarshipsPage />
           </div>
         </SwapiServiceProvider>
