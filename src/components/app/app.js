@@ -3,29 +3,18 @@ import React, { Component } from 'react';
 import Header from './../header';
 import RandomPlanet from './../random-planet';
 import ErrorBoundry from './../error-boundry';
-
-import ItemDetails from './../item-details';
 import SwapiService from './../../services/swapi-service';
+import DummySwapiService from './../../services/dummy-swapi-service';
+
+import { PeoplePage, PlanetsPage, StarshipsPage } from './../pages';
 
 import { SwapiServiceProvider } from './../swapi-service-context';
-
-import {
-  PersonList,
-  PlanetList,
-  StarshipList,
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails
-} from './../sw-components';
 
 import './app.css';
 
 export default class App extends Component {
-  swapiService = new SwapiService();
-
   state = {
-    showRandomPlanet: true,
-    hasError: false
+    swapiService: new SwapiService()
   }
 
   componentDidCatch() {
@@ -34,30 +23,29 @@ export default class App extends Component {
     });
   }
 
-  toggleRandomPlanet = _ => {
-    this.setState({
-      showRandomPlanet: !this.state.showRandomPlanet
+  onServiceChange = () => {
+    this.setState(({ swapiService }) => {
+      const Service = swapiService instanceof SwapiService ? DummySwapiService : SwapiService;
+      return {
+        swapiService: new Service()
+      }
     });
   }
 
   render() {
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className='app-center'>
-            <Header />
+            <Header onServiceChange={this.onServiceChange} />
 
-            <PersonDetails itemId={11} />
+            <RandomPlanet />
 
-            <PlanetDetails itemId={5} />
+            <PeoplePage />
 
-            <StarshipDetails itemId={9} />
-              
-            <PersonList />
+            <PlanetsPage />
 
-            <StarshipList />
-
-            <PlanetList />
+            <StarshipsPage />
           </div>
         </SwapiServiceProvider>
       </ErrorBoundry>
